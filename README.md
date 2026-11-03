@@ -1,3 +1,5 @@
+![title](media/title.gif)
+
 # blank-page
 
 A skill for Claude Code and Codex, `blank-page`, for getting started on a motion piece. The hardest
