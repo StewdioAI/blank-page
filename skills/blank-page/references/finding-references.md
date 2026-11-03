@@ -239,16 +239,20 @@ switching aesthetic.
 
 ### Pinterest
 
-`WebSearch(query="<role query>", allowed_domains=["pinterest.com"])`. A plain
-`site:pinterest.com` query returns nothing. Resolve pins with `pin <url> ...`: original
-media, `moving`, outbound `source` (often the Dribbble / Behance / Instagram original),
-`embed` (only a thumbnail of a YouTube / Vimeo / reel) and `dead`.
+Web search restricted to pinterest.com. In Claude Code that is
+`WebSearch(query="<role query>", allowed_domains=["pinterest.com"])`; a plain
+`site:pinterest.com` query returns nothing there. In Codex or another host, use its web
+search with a domain filter if it has one, else `site:pinterest.com`.
+
+Resolve pins with `pin <url> ...`: original media, `moving`, outbound `source` (often
+the Dribbble / Behance / Instagram original), `embed` (only a thumbnail of a YouTube /
+Vimeo / reel) and `dead`.
 
 ### Primary sites
 
-Follow `source` from the block or pin first. Otherwise WebSearch with `allowed_domains`
-set to the right home: the studio's site, Behance, Vimeo, a museum's open-access
-collection or Wikimedia Commons for artworks, the brand's press kit for logos. For
+Follow `source` from the block or pin first. Otherwise web search restricted to the right
+home: the studio's site, Behance, Vimeo, a museum's open-access collection or Wikimedia
+Commons for artworks, the brand's press kit for logos. For
 `like <brand>`, the product surface (homepage, docs, app) is read for hex, type and one
 real component; the images themselves come from are.na channels named for the brand
 (see "The fence"). Screenshots of docs or settings pages are facts, not references.

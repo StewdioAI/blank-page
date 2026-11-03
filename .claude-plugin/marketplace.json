@@ -8,7 +8,7 @@
     {
       "name": "expand-motion",
       "source": "./",
-      "description": "The /expand-prompt skill: terse creative brief in, referenced and beat-by-beat prompt out."
+      "description": "The /blank-page skill: terse creative brief in, referenced and beat-by-beat prompt out."
     }
   ]
 }

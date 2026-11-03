@@ -1,6 +1,6 @@
 # expand-motion
 
-A Claude Code skill, `expand-prompt`, for getting started on a motion piece. The hardest
+A skill for Claude Code and Codex, `blank-page`, for getting started on a motion piece. The hardest
 part of prompting is the blank page: you know roughly what the clip is for, not what it
 should look like. Give it a one-liner and it turns that into a full prompt with a look,
 references and a sequence of beats, so the first result is already an interesting one.
@@ -8,16 +8,24 @@ references and a sequence of beats, so the first result is already an interestin
 Good for when you don't know what you want yet, and for when you do but want to explore
 directions you wouldn't have thought of.
 
+Built alongside [Stewdio](https://www.stewdio.ai), where you create motion graphics with
+prompts and refine them by hand in a visual editor. The before / after clips below were
+made there. The skill works with any agent, and pairs well with the
+[Stewdio plugin](https://github.com/StewdioAI/plugin), which takes the expanded prompt
+straight to an editable comp.
+
+Made by Blake Shao, [@blak3shao](https://x.com/blak3shao) on X.
+
 ## Before / after
 
 Each pair starts from the same one-line prompt. Before: the prompt handed to the agent
-as typed. After: the prompt run through `/expand-prompt` first.
+as typed. After: the prompt run through `/blank-page` first.
 
-> 5 second clip for a note-taking app launch. you type one search and results pop in from docs, slack and email
+> 5 sec clip for a payments api: a request leaves the code and comes back as a payment confirmed. dark mode, kind of like stripe’s style
 
 | before | after |
 |---|---|
-| ![notes search, before](media/notes-search-before.gif) | ![notes search, after](media/notes-search-after.gif) |
+| ![payments api, before](media/payments-api-before.gif) | ![payments api, after](media/payments-api-after.gif) |
 
 > quick 5 second twitter post: our design tool just hit 10,000 users
 
@@ -31,17 +39,35 @@ as typed. After: the prompt run through `/expand-prompt` first.
 |---|---|
 | ![pricing glass, before](media/pricing-glass-before.gif) | ![pricing glass, after](media/pricing-glass-after.gif) |
 
-> 5 sec clip for a payments api: a request leaves the code and comes back as a payment confirmed. dark mode, kind of like stripe’s style
+> 5 second clip for a note-taking app launch. you type one search and results pop in from docs, slack and email
 
 | before | after |
 |---|---|
-| ![payments api, before](media/payments-api-before.gif) | ![payments api, after](media/payments-api-after.gif) |
+| ![notes search, before](media/notes-search-before.gif) | ![notes search, after](media/notes-search-after.gif) |
 
 > 5 second changelog clip for a calendar app. the messy old settings page snaps into clean grouped sections. clean and minimal, lots of white
 
 | before | after |
 |---|---|
 | ![calendar settings, before](media/calendar-settings-before.gif) | ![calendar settings, after](media/calendar-settings-after.gif) |
+
+## How to use
+
+Type `/blank-page` (or `$blank-page` in Codex) and describe the clip the way you'd say it
+out loud:
+
+```
+/blank-page a 5 second launch video for my app
+```
+
+That's enough to start. Add what it's for, a vibe, or a brand you like if you have one:
+
+```
+/blank-page 5 second clip for my coffee shop's new menu, warm and cozy
+```
+
+You can also just say "expand this prompt" or "help me write the prompt for ..." and it
+kicks in.
 
 ## How it works
 
@@ -61,16 +87,17 @@ You get back the prompt with every reference attached, plus up to three creative
 calls it made, so you can swap any of them before handing it to an agent.
 
 Short edit notes ("make it faster") skip the search and come back as a short, precise note.
-More examples: [`references/examples.md`](skills/expand-prompt/references/examples.md).
+More examples: [`references/examples.md`](skills/blank-page/references/examples.md).
 
 ## Layout
 
 ```
-.claude-plugin/
-  plugin.json          plugin manifest
-  marketplace.json     single-plugin marketplace, so the repo installs with /plugin
-skills/expand-prompt/
-  SKILL.md             the procedure
+.claude-plugin/        Claude Code plugin + marketplace manifests
+.codex-plugin/         Codex plugin manifest
+.agents/plugins/       Codex marketplace manifest
+skills/blank-page/
+  SKILL.md             the procedure (shared by both)
+  agents/openai.yaml   Codex display metadata
   references/          finding-references, vocabulary, examples, patterns
   scripts/find_refs.py are.na / Pinterest / Sketchfab search, downloads, contact sheets
 media/                 before / after gifs for the README
@@ -78,34 +105,48 @@ media/                 before / after gifs for the README
 
 ## Install
 
-As a plugin (skill shows up as `expand-motion:expand-prompt`):
+### Claude Code
+
+As a plugin (skill shows up as `expand-motion:blank-page`):
 
 ```
 /plugin marketplace add blakeshao/expand-motion
 /plugin install expand-motion@expand-motion
 ```
 
-Or as a plain user skill (shows up as `/expand-prompt`):
+Or as a plain skill (shows up as `/blank-page`):
 
 ```sh
 git clone https://github.com/blakeshao/expand-motion.git
-ln -s "$PWD/expand-motion/skills/expand-prompt" ~/.claude/skills/expand-prompt
+ln -s "$PWD/expand-motion/skills/blank-page" ~/.claude/skills/blank-page
 ```
 
-Use a project-level `.claude/skills/expand-prompt` symlink instead to scope it to one repo.
+### Codex
+
+As a plugin:
+
+```sh
+codex plugin marketplace add blakeshao/expand-motion
+codex plugin add expand-motion@expand-motion
+```
+
+Or as a plain skill:
+
+```sh
+git clone https://github.com/blakeshao/expand-motion.git
+ln -s "$PWD/expand-motion/skills/blank-page" ~/.agents/skills/blank-page
+```
+
+For either tool, symlink into a project's `.claude/skills/` or `.agents/skills/` instead
+to scope it to one repo.
 
 ## Requirements
 
 - `python3` (stdlib only) and `curl`
 - `ffmpeg` for contact sheets (`find_refs.py sheet`, `channel <slug> <dir>`)
-- WebSearch, for finding Pinterest pins
+- web search in the agent, for finding Pinterest pins
 - optional `SKETCHFAB_TOKEN` for Sketchfab downloads not in the Objaverse mirror
 
-## Usage
+## License
 
-```
-/expand-prompt a typing eye made of glb parts, blinking on each keystroke
-```
-
-Also triggers on "expand this prompt", "make this prompt more specific", "what is
-missing from this prompt", or whenever a short brief is about to be handed to an agent.
+[MIT](LICENSE)

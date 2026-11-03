@@ -3,7 +3,9 @@
   "description": "Expand a terse motion / composition brief into a full prompt: grounded in five images and three moving references, written as numbered beats.",
   "version": "0.1.0",
   "author": {
-    "name": "Blake Shao"
+    "name": "Blake Shao",
+    "url": "https://x.com/blak3shao"
   },
-  "repository": "https://github.com/blakeshao/expand-motion"
+  "repository": "https://github.com/blakeshao/expand-motion",
+  "license": "MIT"
 }
