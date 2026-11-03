@@ -75,9 +75,9 @@ A one-line prompt gives the agent nothing to aim at, so it falls back on the saf
 version of the idea. Instead of asking you to fill in the blanks, the skill goes looking
 for references first and builds the prompt around what it finds.
 
-1. **Pick a look.** Five images from one aesthetic on are.na. If you name a style or
+1. **Pick a look.** Five images from one aesthetic on are.na, pinterest, or open internet. If you name a style or
    brand, it stays inside it.
-2. **Find the motion.** Three gifs or videos with moves worth copying.
+2. **Find the motion.** Three gifs or videos with moves to reference.
 3. **Write the beats.** A numbered sequence built from those references, with at least
    one twist: a reveal, a morph, a zoom-out.
 4. **Add real assets.** A 3D model, footage or the real UI instead of a hand-built
