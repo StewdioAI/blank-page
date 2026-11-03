@@ -13,11 +13,11 @@ directions you wouldn't have thought of.
 Each pair starts from the same one-line prompt. Before: the prompt handed to the agent
 as typed. After: the prompt run through `/expand-prompt` first.
 
-> 5 second clip for a note-taking app launch. you type one search and results pop in from docs, slack and email
+> 5 sec clip for a payments api: a request leaves the code and comes back as a payment confirmed. dark mode, kind of like stripe’s style
 
 | before | after |
 |---|---|
-| ![notes search, before](media/notes-search-before.gif) | ![notes search, after](media/notes-search-after.gif) |
+| ![payments api, before](media/payments-api-before.gif) | ![payments api, after](media/payments-api-after.gif) |
 
 > quick 5 second twitter post: our design tool just hit 10,000 users
 
@@ -31,11 +31,11 @@ as typed. After: the prompt run through `/expand-prompt` first.
 |---|---|
 | ![pricing glass, before](media/pricing-glass-before.gif) | ![pricing glass, after](media/pricing-glass-after.gif) |
 
-> 5 sec clip for a payments api: a request leaves the code and comes back as a payment confirmed. dark mode, kind of like stripe’s style
+> 5 second clip for a note-taking app launch. you type one search and results pop in from docs, slack and email
 
 | before | after |
 |---|---|
-| ![payments api, before](media/payments-api-before.gif) | ![payments api, after](media/payments-api-after.gif) |
+| ![notes search, before](media/notes-search-before.gif) | ![notes search, after](media/notes-search-after.gif) |
 
 > 5 second changelog clip for a calendar app. the messy old settings page snaps into clean grouped sections. clean and minimal, lots of white
 
