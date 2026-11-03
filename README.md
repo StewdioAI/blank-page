@@ -45,55 +45,23 @@ as typed. After: the prompt run through `/expand-prompt` first.
 
 ## How it works
 
-A capable agent already picks sensible easing and staggers. What it does not do on its
-own is commit to a look, copy a striking move, use a real asset and add a turn. The skill
-makes it do those four things, in a fixed order: references first, beats second.
+Agents handle easing and timing fine on their own. What they skip is taste: a committed
+look, a move worth copying, real assets, and a moment of surprise. The skill finds
+references first, then writes the prompt around them.
 
-1. **Classify the draft.** A new brief, a batch of variations, a timed sequence, an edit
-   ("make X more Y"), or feedback on a screenshot. Edits and feedback skip the search
-   and come back as short, targeted notes with a keep-clause.
-2. **Pick one aesthetic and ground it in five images.** Overall look, palette, material,
-   composition, detail, all from one aesthetic (an are.na channel). A style, brand or medium named
-   in the draft fences the search: the best instance inside it, never a different look.
-3. **Find three moving references.** gifs / mp4s from motion channels, one each for the
-   entrance or main mechanic, the turn, and the exit or camera. Each is cut into a
-   contact sheet so its timing can be read. The fence does not apply here; the move stays
-   free.
-4. **Tie every reference to a beat.** Which beat it feeds and exactly what is taken
-   ("m1 0.0-1.6s is beat 1 at 1.5x slower, subject swapped"). A reference that feeds no
-   beat is dropped. The beats take their order and timing from the motion refs, and at
-   least one is a turn: a reveal, a morph, a zoom-out, a change of medium.
-5. **Add ideas, fill the gaps.** A prop, a real asset (a Sketchfab model, real footage,
-   the real UI), a camera move tied to the reveal. Routine gaps get defaults inline;
-   creative forks get a `[? ...]` placeholder.
-6. **Write it in the house shape.** Lowercase, imperative, numbered, under ~150 words,
-   closing with `refs:` and `assets:`.
+1. **Pick a look.** Five images from one aesthetic on are.na. If you name a style or
+   brand, it stays inside it.
+2. **Find the motion.** Three gifs or videos with moves worth copying.
+3. **Write the beats.** A numbered sequence built from those references, with at least
+   one twist: a reveal, a morph, a zoom-out.
+4. **Add real assets.** A 3D model, footage or the real UI instead of a hand-built
+   stand-in.
 
-The output is the prompt in a fenced block, up to three fill-ins (the creative forks,
-each with the choice made and one alternative), and a pointer to
-`.context/refs/<topic>/` with the contact sheets so you can veto a pick. Handing the
-prompt to the agent is up to you.
+You get back the prompt with every reference attached, plus up to three creative
+calls it made, so you can swap any of them before handing it to an agent.
 
-```
-in stewdio, <file>, create the following, in <aesthetic>:
-
-1. <subject at 0s> enters like m1
-2. <main action from m1, subject swapped> at ~2s, on a3's <material>
-3. <the turn: reveals / turns into / zooms out to show ...>
-4. <end state>
-
-<pace>; <camera>; ~5s
-expose params for <list>
-
-refs:
-- a1 .context/refs/<topic>/a1.jpg: look, sets beat 1's frame (are.na/block/<id>, channel <slug>)
-- m1 .context/refs/<topic>/m1.gif: motion, beat 1: <mechanic, 0.0-1.6s at 1.5x slower>, subject swapped
-- ...
-assets:
-- <sketchfab page> (<author>, <licence>): <object>, one-to-one
-```
-
-`skills/expand-prompt/references/examples.md` has real before / after prompt pairs.
+Short edit notes ("make it faster") skip the search and come back as a short, precise note.
+More examples: [`references/examples.md`](skills/expand-prompt/references/examples.md).
 
 ## Layout
 
