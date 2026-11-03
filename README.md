@@ -1,12 +1,12 @@
 # expand-motion
 
-A Claude Code skill, `expand-prompt`, that turns a one-line animation / composition /
-design brief into the prompt its author would have written: one committed aesthetic,
-five images grounding the look, three moving references grounding the motion, and
-numbered beats derived from them.
+A Claude Code skill, `expand-prompt`, for getting started on a motion piece. The hardest
+part of prompting is the blank page: you know roughly what the clip is for, not what it
+should look like. Give it a one-liner and it turns that into a full prompt with a look,
+references and a sequence of beats, so the first result is already an interesting one.
 
-Built in Stewdio composition work (motion, 3D, shaders, footage); the method applies
-to any generative brief.
+Good for when you don't know what you want yet, and for when you do but want to explore
+directions you wouldn't have thought of.
 
 ## Before / after
 
@@ -45,9 +45,9 @@ as typed. After: the prompt run through `/expand-prompt` first.
 
 ## How it works
 
-Agents handle easing and timing fine on their own. What they skip is taste: a committed
-look, a move worth copying, real assets, and a moment of surprise. The skill finds
-references first, then writes the prompt around them.
+A one-line prompt gives the agent nothing to aim at, so it falls back on the safest
+version of the idea. Instead of asking you to fill in the blanks, the skill goes looking
+for references first and builds the prompt around what it finds.
 
 1. **Pick a look.** Five images from one aesthetic on are.na. If you name a style or
    brand, it stays inside it.
