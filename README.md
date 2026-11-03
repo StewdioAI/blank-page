@@ -101,11 +101,8 @@ More examples: [`references/examples.md`](skills/blank-page/references/examples.
 ## Layout
 
 ```
-.claude-plugin/        Claude Code plugin + marketplace manifests
-.codex-plugin/         Codex plugin manifest
-.agents/plugins/       Codex marketplace manifest
 skills/blank-page/
-  SKILL.md             the procedure (shared by both)
+  SKILL.md             the procedure
   agents/openai.yaml   Codex display metadata
   references/          finding-references, vocabulary, examples, patterns
   scripts/find_refs.py are.na / Pinterest / Sketchfab search, downloads, contact sheets
