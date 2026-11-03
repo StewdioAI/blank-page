@@ -51,6 +51,15 @@ as typed. After: the prompt run through `/blank-page` first.
 |---|---|
 | ![calendar settings, before](media/calendar-settings-before.gif) | ![calendar settings, after](media/calendar-settings-after.gif) |
 
+## Install
+
+```sh
+npx skills add blakeshao/blank-page
+```
+
+Works with Claude Code, Codex and most other coding agents; it asks which ones to
+install to. Add `-g` to install for every project instead of just this one.
+
 ## How to use
 
 Type `/blank-page` (or `$blank-page` in Codex) and describe the clip the way you'd say it
@@ -102,43 +111,6 @@ skills/blank-page/
   scripts/find_refs.py are.na / Pinterest / Sketchfab search, downloads, contact sheets
 media/                 before / after gifs for the README
 ```
-
-## Install
-
-### Claude Code
-
-As a plugin (skill shows up as `blank-page:blank-page`):
-
-```
-/plugin marketplace add blakeshao/blank-page
-/plugin install blank-page@blank-page
-```
-
-Or as a plain skill (shows up as `/blank-page`):
-
-```sh
-git clone https://github.com/blakeshao/blank-page.git
-ln -s "$PWD/blank-page/skills/blank-page" ~/.claude/skills/blank-page
-```
-
-### Codex
-
-As a plugin:
-
-```sh
-codex plugin marketplace add blakeshao/blank-page
-codex plugin add blank-page@blank-page
-```
-
-Or as a plain skill:
-
-```sh
-git clone https://github.com/blakeshao/blank-page.git
-ln -s "$PWD/blank-page/skills/blank-page" ~/.agents/skills/blank-page
-```
-
-For either tool, symlink into a project's `.claude/skills/` or `.agents/skills/` instead
-to scope it to one repo.
 
 ## Requirements
 
