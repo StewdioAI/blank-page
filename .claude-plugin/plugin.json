@@ -5,5 +5,6 @@
   "author": {
     "name": "Blake Shao"
   },
-  "repository": "https://github.com/blakeshao/expand-motion"
+  "repository": "https://github.com/blakeshao/expand-motion",
+  "license": "MIT"
 }
