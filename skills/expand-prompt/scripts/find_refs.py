@@ -30,7 +30,7 @@ are.na is searched by channel, never by block keyword:
                                           else with SKETCHFAB_TOKEN (sketchfab.com/settings/password), else prints the page
 
 Search order is are.na (channels only) first, Pinterest only for roles still empty. Pinterest has no usable search
-endpoint: find pins with WebSearch(allowed_domains=["pinterest.com"]), then resolve them here. Output is one JSON object per line."""
+endpoint: find pins with a web search restricted to pinterest.com, then resolve them here. Output is one JSON object per line."""
 import base64, concurrent.futures, gzip, html, json, os, re, shutil, subprocess, sys, time, urllib.parse
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"

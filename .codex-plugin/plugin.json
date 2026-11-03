@@ -1,0 +1,25 @@
+{
+  "name": "expand-motion",
+  "version": "0.1.0",
+  "description": "Expand a terse motion / composition brief into a full prompt: grounded in five images and three moving references, written as numbered beats.",
+  "author": {
+    "name": "Blake Shao"
+  },
+  "repository": "https://github.com/blakeshao/expand-motion",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Expand Motion",
+    "shortDescription": "Turn a one-line motion brief into a full prompt",
+    "longDescription": "Get past the blank page on a motion piece. Give it a one-liner and it finds a look (five images from one aesthetic on are.na), three moving references worth copying, and real assets, then writes a numbered, beat-by-beat prompt with every reference attached. Good for when you don't know what you want yet, and for exploring directions you wouldn't have thought of.",
+    "developerName": "Blake Shao",
+    "category": "Creativity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Expand this prompt: 5 second clip for a payments api, a request leaves the code and comes back as a payment confirmed",
+      "Expand this prompt: quick 5 second twitter post, our design tool just hit 10,000 users"
+    ]
+  }
+}

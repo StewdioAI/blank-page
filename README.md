@@ -1,6 +1,6 @@
 # expand-motion
 
-A Claude Code skill, `expand-prompt`, for getting started on a motion piece. The hardest
+A skill for Claude Code and Codex, `expand-prompt`, for getting started on a motion piece. The hardest
 part of prompting is the blank page: you know roughly what the clip is for, not what it
 should look like. Give it a one-liner and it turns that into a full prompt with a look,
 references and a sequence of beats, so the first result is already an interesting one.
@@ -66,17 +66,20 @@ More examples: [`references/examples.md`](skills/expand-prompt/references/exampl
 ## Layout
 
 ```
-.claude-plugin/
-  plugin.json          plugin manifest
-  marketplace.json     single-plugin marketplace, so the repo installs with /plugin
+.claude-plugin/        Claude Code plugin + marketplace manifests
+.codex-plugin/         Codex plugin manifest
+.agents/plugins/       Codex marketplace manifest
 skills/expand-prompt/
-  SKILL.md             the procedure
+  SKILL.md             the procedure (shared by both)
+  agents/openai.yaml   Codex display metadata
   references/          finding-references, vocabulary, examples, patterns
   scripts/find_refs.py are.na / Pinterest / Sketchfab search, downloads, contact sheets
 media/                 before / after gifs for the README
 ```
 
 ## Install
+
+### Claude Code
 
 As a plugin (skill shows up as `expand-motion:expand-prompt`):
 
@@ -85,26 +88,44 @@ As a plugin (skill shows up as `expand-motion:expand-prompt`):
 /plugin install expand-motion@expand-motion
 ```
 
-Or as a plain user skill (shows up as `/expand-prompt`):
+Or as a plain skill (shows up as `/expand-prompt`):
 
 ```sh
 git clone https://github.com/blakeshao/expand-motion.git
 ln -s "$PWD/expand-motion/skills/expand-prompt" ~/.claude/skills/expand-prompt
 ```
 
-Use a project-level `.claude/skills/expand-prompt` symlink instead to scope it to one repo.
+### Codex
+
+As a plugin:
+
+```sh
+codex plugin marketplace add blakeshao/expand-motion
+codex plugin add expand-motion@expand-motion
+```
+
+Or as a plain skill:
+
+```sh
+git clone https://github.com/blakeshao/expand-motion.git
+ln -s "$PWD/expand-motion/skills/expand-prompt" ~/.agents/skills/expand-prompt
+```
+
+For either tool, symlink into a project's `.claude/skills/` or `.agents/skills/` instead
+to scope it to one repo.
 
 ## Requirements
 
 - `python3` (stdlib only) and `curl`
 - `ffmpeg` for contact sheets (`find_refs.py sheet`, `channel <slug> <dir>`)
-- WebSearch, for finding Pinterest pins
+- web search in the agent, for finding Pinterest pins
 - optional `SKETCHFAB_TOKEN` for Sketchfab downloads not in the Objaverse mirror
 
 ## Usage
 
 ```
-/expand-prompt a typing eye made of glb parts, blinking on each keystroke
+/expand-prompt a typing eye made of glb parts, blinking on each keystroke   # Claude Code
+$expand-prompt a typing eye made of glb parts, blinking on each keystroke   # Codex
 ```
 
 Also triggers on "expand this prompt", "make this prompt more specific", "what is
