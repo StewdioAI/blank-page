@@ -14,6 +14,8 @@ made there. The skill works with any agent, and pairs well with the
 [Stewdio plugin](https://github.com/StewdioAI/plugin), which takes the expanded prompt
 straight to an editable comp.
 
+Made by Blake Shao, [@blak3shao](https://x.com/blak3shao) on X.
+
 ## Before / after
 
 Each pair starts from the same one-line prompt. Before: the prompt handed to the agent
