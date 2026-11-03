@@ -1,9 +1,9 @@
 ---
-name: expand-prompt
-description: Expand a terse creative brief or edit note into the prompt its author would write, in Blake's house shape. For a new brief the order is fixed: first find five images from one aesthetic to ground the visual direction and three moving references to ground the motion (are.na channels, then Pinterest, primary sites, Sketchfab), decide concretely how each one is used in which beat, derive the numbered beats from the motion references, then write the prompt with references and assets attached. A style, brand or medium the user names, or a reference they attach, fences the search: pick the best instance inside it, never a different aesthetic. Use for "/expand-prompt", "expand this prompt", "make this prompt more specific", "what is missing from this prompt", "help me write the prompt for X", or whenever a one-line animation / composition / design brief is about to be handed to an agent.
+name: blank-page
+description: Expand a terse creative brief or edit note into the prompt its author would write, in Blake's house shape. For a new brief the order is fixed: first find five images from one aesthetic to ground the visual direction and three moving references to ground the motion (are.na channels, then Pinterest, primary sites, Sketchfab), decide concretely how each one is used in which beat, derive the numbered beats from the motion references, then write the prompt with references and assets attached. A style, brand or medium the user names, or a reference they attach, fences the search: pick the best instance inside it, never a different aesthetic. Use for "/blank-page", "expand this prompt", "make this prompt more specific", "what is missing from this prompt", "help me write the prompt for X", or whenever a one-line animation / composition / design brief is about to be handed to an agent.
 ---
 
-# Expand prompt
+# Blank page
 
 Turn a short draft into the brief its author would have written. The drafts are usually
 Stewdio composition work (motion, 3D, shaders, footage); the method applies to any

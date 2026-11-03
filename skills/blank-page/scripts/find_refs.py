@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reference finder for /expand-prompt. Stdlib only; ffmpeg for sheets.
+"""Reference finder for /blank-page. Stdlib only; ffmpeg for sheets.
 
 are.na is searched by channel, never by block keyword:
   find_refs.py channels <query> [n]       channel search ranked by followers (length >= 20): slug, title, length, owner

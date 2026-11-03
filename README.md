@@ -1,6 +1,6 @@
 # expand-motion
 
-A skill for Claude Code and Codex, `expand-prompt`, for getting started on a motion piece. The hardest
+A skill for Claude Code and Codex, `blank-page`, for getting started on a motion piece. The hardest
 part of prompting is the blank page: you know roughly what the clip is for, not what it
 should look like. Give it a one-liner and it turns that into a full prompt with a look,
 references and a sequence of beats, so the first result is already an interesting one.
@@ -19,7 +19,7 @@ Made by Blake Shao, [@blak3shao](https://x.com/blak3shao) on X.
 ## Before / after
 
 Each pair starts from the same one-line prompt. Before: the prompt handed to the agent
-as typed. After: the prompt run through `/expand-prompt` first.
+as typed. After: the prompt run through `/blank-page` first.
 
 > 5 sec clip for a payments api: a request leaves the code and comes back as a payment confirmed. dark mode, kind of like stripe’s style
 
@@ -69,7 +69,7 @@ You get back the prompt with every reference attached, plus up to three creative
 calls it made, so you can swap any of them before handing it to an agent.
 
 Short edit notes ("make it faster") skip the search and come back as a short, precise note.
-More examples: [`references/examples.md`](skills/expand-prompt/references/examples.md).
+More examples: [`references/examples.md`](skills/blank-page/references/examples.md).
 
 ## Layout
 
@@ -77,7 +77,7 @@ More examples: [`references/examples.md`](skills/expand-prompt/references/exampl
 .claude-plugin/        Claude Code plugin + marketplace manifests
 .codex-plugin/         Codex plugin manifest
 .agents/plugins/       Codex marketplace manifest
-skills/expand-prompt/
+skills/blank-page/
   SKILL.md             the procedure (shared by both)
   agents/openai.yaml   Codex display metadata
   references/          finding-references, vocabulary, examples, patterns
@@ -89,18 +89,18 @@ media/                 before / after gifs for the README
 
 ### Claude Code
 
-As a plugin (skill shows up as `expand-motion:expand-prompt`):
+As a plugin (skill shows up as `expand-motion:blank-page`):
 
 ```
 /plugin marketplace add blakeshao/expand-motion
 /plugin install expand-motion@expand-motion
 ```
 
-Or as a plain skill (shows up as `/expand-prompt`):
+Or as a plain skill (shows up as `/blank-page`):
 
 ```sh
 git clone https://github.com/blakeshao/expand-motion.git
-ln -s "$PWD/expand-motion/skills/expand-prompt" ~/.claude/skills/expand-prompt
+ln -s "$PWD/expand-motion/skills/blank-page" ~/.claude/skills/blank-page
 ```
 
 ### Codex
@@ -116,7 +116,7 @@ Or as a plain skill:
 
 ```sh
 git clone https://github.com/blakeshao/expand-motion.git
-ln -s "$PWD/expand-motion/skills/expand-prompt" ~/.agents/skills/expand-prompt
+ln -s "$PWD/expand-motion/skills/blank-page" ~/.agents/skills/blank-page
 ```
 
 For either tool, symlink into a project's `.claude/skills/` or `.agents/skills/` instead
@@ -132,8 +132,8 @@ to scope it to one repo.
 ## Usage
 
 ```
-/expand-prompt a typing eye made of glb parts, blinking on each keystroke   # Claude Code
-$expand-prompt a typing eye made of glb parts, blinking on each keystroke   # Codex
+/blank-page a typing eye made of glb parts, blinking on each keystroke   # Claude Code
+$blank-page a typing eye made of glb parts, blinking on each keystroke   # Codex
 ```
 
 Also triggers on "expand this prompt", "make this prompt more specific", "what is
