@@ -1,4 +1,4 @@
-# expand-motion
+# blank-page
 
 A skill for Claude Code and Codex, `blank-page`, for getting started on a motion piece. The hardest
 part of prompting is the blank page: you know roughly what the clip is for, not what it
@@ -107,18 +107,18 @@ media/                 before / after gifs for the README
 
 ### Claude Code
 
-As a plugin (skill shows up as `expand-motion:blank-page`):
+As a plugin (skill shows up as `blank-page:blank-page`):
 
 ```
-/plugin marketplace add blakeshao/expand-motion
-/plugin install expand-motion@expand-motion
+/plugin marketplace add blakeshao/blank-page
+/plugin install blank-page@blank-page
 ```
 
 Or as a plain skill (shows up as `/blank-page`):
 
 ```sh
-git clone https://github.com/blakeshao/expand-motion.git
-ln -s "$PWD/expand-motion/skills/blank-page" ~/.claude/skills/blank-page
+git clone https://github.com/blakeshao/blank-page.git
+ln -s "$PWD/blank-page/skills/blank-page" ~/.claude/skills/blank-page
 ```
 
 ### Codex
@@ -126,15 +126,15 @@ ln -s "$PWD/expand-motion/skills/blank-page" ~/.claude/skills/blank-page
 As a plugin:
 
 ```sh
-codex plugin marketplace add blakeshao/expand-motion
-codex plugin add expand-motion@expand-motion
+codex plugin marketplace add blakeshao/blank-page
+codex plugin add blank-page@blank-page
 ```
 
 Or as a plain skill:
 
 ```sh
-git clone https://github.com/blakeshao/expand-motion.git
-ln -s "$PWD/expand-motion/skills/blank-page" ~/.agents/skills/blank-page
+git clone https://github.com/blakeshao/blank-page.git
+ln -s "$PWD/blank-page/skills/blank-page" ~/.agents/skills/blank-page
 ```
 
 For either tool, symlink into a project's `.claude/skills/` or `.agents/skills/` instead

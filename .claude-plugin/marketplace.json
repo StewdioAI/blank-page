@@ -1,12 +1,12 @@
 {
-  "name": "expand-motion",
+  "name": "blank-page",
   "description": "Motion and composition prompting skills.",
   "owner": {
     "name": "Blake Shao"
   },
   "plugins": [
     {
-      "name": "expand-motion",
+      "name": "blank-page",
       "source": "./",
       "description": "The /blank-page skill: terse creative brief in, referenced and beat-by-beat prompt out."
     }
