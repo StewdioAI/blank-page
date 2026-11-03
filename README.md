@@ -51,6 +51,24 @@ as typed. After: the prompt run through `/blank-page` first.
 |---|---|
 | ![calendar settings, before](media/calendar-settings-before.gif) | ![calendar settings, after](media/calendar-settings-after.gif) |
 
+## How to use
+
+Type `/blank-page` (or `$blank-page` in Codex) and describe the clip the way you'd say it
+out loud:
+
+```
+/blank-page a 5 second launch video for my app
+```
+
+That's enough to start. Add what it's for, a vibe, or a brand you like if you have one:
+
+```
+/blank-page 5 second clip for my coffee shop's new menu, warm and cozy
+```
+
+You can also just say "expand this prompt" or "help me write the prompt for ..." and it
+kicks in.
+
 ## How it works
 
 A one-line prompt gives the agent nothing to aim at, so it falls back on the safest
@@ -128,16 +146,6 @@ to scope it to one repo.
 - `ffmpeg` for contact sheets (`find_refs.py sheet`, `channel <slug> <dir>`)
 - web search in the agent, for finding Pinterest pins
 - optional `SKETCHFAB_TOKEN` for Sketchfab downloads not in the Objaverse mirror
-
-## Usage
-
-```
-/blank-page a typing eye made of glb parts, blinking on each keystroke   # Claude Code
-$blank-page a typing eye made of glb parts, blinking on each keystroke   # Codex
-```
-
-Also triggers on "expand this prompt", "make this prompt more specific", "what is
-missing from this prompt", or whenever a short brief is about to be handed to an agent.
 
 ## License
 
