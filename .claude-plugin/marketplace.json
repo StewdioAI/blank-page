@@ -1,0 +1,14 @@
+{
+  "name": "expand-motion",
+  "description": "Motion and composition prompting skills.",
+  "owner": {
+    "name": "Blake Shao"
+  },
+  "plugins": [
+    {
+      "name": "expand-motion",
+      "source": "./",
+      "description": "The /expand-prompt skill: terse creative brief in, referenced and beat-by-beat prompt out."
+    }
+  ]
+}
