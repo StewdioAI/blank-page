@@ -1,11 +1,11 @@
 {
-  "name": "expand-motion",
+  "name": "blank-page",
   "interface": {
-    "displayName": "Expand Motion"
+    "displayName": "Blank Page"
   },
   "plugins": [
     {
-      "name": "expand-motion",
+      "name": "blank-page",
       "source": {
         "source": "local",
         "path": "./"
