@@ -8,13 +8,13 @@ references and a sequence of beats, so the first result is already an interestin
 Good for when you don't know what you want yet, and for when you do but want to explore
 directions you wouldn't have thought of.
 
-Built alongside [Stewdio](https://www.stewdio.ai), where you create motion graphics with
-prompts and refine them by hand in a visual editor. The before / after clips below were
-made there. The skill works with any agent, and pairs well with the
+By [Stewdio](https://www.stewdio.ai), where you create motion graphics with prompts and
+refine them by hand in a visual editor. The before / after clips below were made there.
+The skill works with any agent, and pairs well with the
 [Stewdio plugin](https://github.com/StewdioAI/plugin), which takes the expanded prompt
 straight to an editable comp.
 
-Made by Blake Shao, [@blak3shao](https://x.com/blak3shao) on X.
+Made by Blake Shao ([@blak3shao](https://x.com/blak3shao)).
 
 ## Before / after
 
@@ -54,7 +54,7 @@ as typed. After: the prompt run through `/blank-page` first.
 ## Install
 
 ```sh
-npx skills add blakeshao/blank-page
+npx skills add StewdioAI/blank-page
 ```
 
 Works with Claude Code, Codex and most other coding agents; it asks which ones to

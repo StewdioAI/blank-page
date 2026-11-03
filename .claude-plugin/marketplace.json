@@ -2,13 +2,15 @@
   "name": "blank-page",
   "description": "Motion and composition prompting skills.",
   "owner": {
-    "name": "Blake Shao"
+    "name": "Cekura, Inc.",
+    "email": "founders@stewdio.ai"
   },
   "plugins": [
     {
       "name": "blank-page",
       "source": "./",
-      "description": "The /blank-page skill: terse creative brief in, referenced and beat-by-beat prompt out."
+      "description": "The /blank-page skill: terse creative brief in, referenced and beat-by-beat prompt out.",
+      "homepage": "https://www.stewdio.ai"
     }
   ]
 }
