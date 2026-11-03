@@ -3,7 +3,7 @@
 38 Claude Code sessions, 2026-09-25 to 2026-11-02, 587 prompts after filtering harness
 noise. 31% are a pasted screenshot or contact sheet with no text; the 406 text prompts
 have a median length of 14 words. The author iterates in many short turns and uses
-images as the main feedback channel. Regenerate with `scripts/extract_prompts.py`.
+images as the main feedback channel.
 
 Share of the 406 text prompts: "make <thing> more / less" delta 35%; a direction word
 22%; names an element inside the comp 21%; **correction of a misread 17%**; targets a
@@ -49,10 +49,10 @@ and add a turn.
 Real openers, all the same skeleton (location, style, numbered beats with inline
 refs, globals after the list, params, realism demand):
 
-- `in stewdio twitter1026, in the style of a 16bit dungeon crawler game, create the following:` + three numbered beats, each with a reference.
-- `in stewdio twitter1013, create the following: a text animation where each letter is an individual silver balloon with this type of texture <img>, and each of them animate in from by inflating from a deflated state, and animate out by reversing that process, the inflation and deflation should be very snappy, ease-in-out` + `expose params to edit the text and the texture and color of the balloon, and the inflation extent and timing` + `it should be very realistic`.
+- `in stewdio file-b, in the style of a 16bit dungeon crawler game, create the following:` + three numbered beats, each with a reference.
+- `in stewdio file-c, create the following: a text animation where each letter is an individual silver balloon with this type of texture <img>, and each of them animate in from by inflating from a deflated state, and animate out by reversing that process, the inflation and deflation should be very snappy, ease-in-out` + `expose params to edit the text and the texture and color of the balloon, and the inflation extent and timing` + `it should be very realistic`.
 - `in stewdio's carousel project, create the following comps` + five one-liners + `for all of them use white bg and 3 place holder images <three files>`.
-- `in the stewdio twitter1026, for the ai psychosis comp, do the following at 7s:` (sequence mode: the location line carries the time anchor).
+- `in the stewdio file-b, for the main comp, do the following at 7s:` (sequence mode: the location line carries the time anchor).
 
 ## Deltas that landed in one round
 

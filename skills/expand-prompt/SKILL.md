@@ -278,6 +278,3 @@ Several deltas: a numbered list, one change per line, each naming its target;
 - `scripts/find_refs.py`: are.na channels / umbrellas / contact sheets, Pinterest
   pin resolution, Sketchfab search + download, file downloads, video contact sheets.
   Run it with no arguments for the command list.
-- `scripts/extract_prompts.py <out.md>`: rebuilds the prompt corpus from every
-  transcript under `~/.claude/projects`. Re-run when the author's habits drift and
-  re-check `patterns.md`.

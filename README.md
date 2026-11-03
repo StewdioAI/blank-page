@@ -17,9 +17,7 @@ to any generative brief.
 skills/expand-prompt/
   SKILL.md             the procedure
   references/          finding-references, vocabulary, examples, patterns
-  scripts/
-    find_refs.py       are.na / Pinterest / Sketchfab search, downloads, contact sheets
-    extract_prompts.py dump human-typed prompts from Claude Code transcripts (corpus building)
+  scripts/find_refs.py are.na / Pinterest / Sketchfab search, downloads, contact sheets
 ```
 
 ## Install

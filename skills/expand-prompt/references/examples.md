@@ -6,14 +6,14 @@ conversation. One example per lesson; the voice stays the author's.
 
 ## 1. Medium unstated (four rounds)
 
-Before (2026-10-21): `in stewdio, twitter1021, create a realistic eye blinking in front of a klein blue background, everything is in resolgraph texture`
+Before (2026-10-21): `in stewdio, file-a, create a realistic eye blinking in front of a klein blue background, everything is in resolgraph texture`
 
 Follow-ups: `make the eye an illustrator vector animation` / `actually revert back to the real eye` / `around the eye, add china porcelain vase's organic yet geometric patterns in white <img>` / `give the pattern a boil effect and have it grow out organically in the beginning` / `have the camera start zoomed out by 1x then a steep quadratic ease-out zoom in that is 2s long`.
 
 After:
 
 ```
-in stewdio, twitter1021, create the following, everything in riso (3-ink halftone, grain, slight misregistration):
+in stewdio, file-a, create the following, everything in riso (3-ink halftone, grain, slight misregistration):
 
 1. a realistic eye (photo/footage based, not vector) centered on a klein blue #002FA7 field, blinking naturally [? 2 blinks over the comp]
 2. around the eye, white porcelain-vase patterns <img: shape + motif only, not the colour>; the ring around the iris turns clockwise, the field outside it counter-clockwise; the whole pattern boils slightly and grows out bottom-up from 0s
@@ -52,14 +52,14 @@ for 23: the new image is already underneath, full frame; the current image is pe
 
 ## 4. Adding to an existing comp without the style lock
 
-Before (2026-10-21): `in riso-tunnel in twitter1021, add a series of square decoration frames in the style of the pattern in riso-blink, have them twist and turn within the tunnel`
+Before (2026-10-21): `in riso-tunnel in file-a, add a series of square decoration frames in the style of the pattern in riso-blink, have them twist and turn within the tunnel`
 
 Follow-ups: `it should be purely white, and its better to reference the outer portion of the first comp, also, have the frames form a proper tunnel it self, the tunnel only twists in rotation` / `they still need to be individual frames rather than a literal tunnel ... it doesn't have to literally contain a square`.
 
 After:
 
 ```
-in riso-tunnel in twitter1021, add a series of individual decorative frames in the white porcelain pattern from the outer field of riso-blink (not the ring):
+in riso-tunnel in file-a, add a series of individual decorative frames in the white porcelain pattern from the outer field of riso-blink (not the ring):
 - purely white, still riso
 - each frame is its own flat shape, roughly square but it need not contain a literal square
 - the frames line up along the tunnel axis so together they read as a tunnel; they only rotate about that axis as the camera passes, no other motion
@@ -108,14 +108,14 @@ keep the orb and camera as they are
 
 ## 8. Sequence beat mid-timeline
 
-Before (2026-10-26): `in stewdio twitter1026, create the following on ai psychosis comp / at 3.5s mark, have many small jack-o-latern version of clawd <img> crawl from the bottom of the screen up all over the skeleton covering it, / then, they crawl down and back to exit, leaving one bone dropping on the ground`
+Before (2026-10-26): `in stewdio file-b, create the following on main comp / at 3.5s mark, have many small jack-o-latern version of clawd <img> crawl from the bottom of the screen up all over the skeleton covering it, / then, they crawl down and back to exit, leaving one bone dropping on the ground`
 
 Follow-ups: `make clawd still look like clawd except for the pumpkin texture` / `still make the eyes glow`.
 
 After:
 
 ```
-in stewdio twitter1026, ai psychosis comp, at 3.5s:
+in stewdio file-b, main comp, at 3.5s:
 1. many small clawds (the clawd silhouette as-is <img>, pumpkin texture + glowing eyes, same 16bit quantisation as the scene) crawl in from the bottom edge and up over the skeleton until it is covered [? ~1.5s]
 2. they crawl back down and exit the bottom edge, leaving one bone that drops to the ground and stays
 keep the sigil, skeleton dance and flames as they are; the beat ends by [? 7s] so the inventory scene can start
@@ -123,7 +123,7 @@ keep the sigil, skeleton dance and flames as they are; the beat ends by [? 7s] s
 
 ## 9. Bare brief: the first skill version versus the opener shape
 
-Before (2026-11-02 test set): `in stewdio skill-after, make a video of our issue tracker app where the tasks show up nicely`
+Before (2026-11-02 test set): `in stewdio file-d, make a video of our issue tracker app where the tasks show up nicely`
 
 What the first skill version produced: a dark linear-style list, "rows stagger in top-down 60ms apart, each rises 8px with opacity 0→1 over 400ms", a 20° tilt, "no fade, no drop shadow", "check sub-pixel smooth at pixelRatio 0.4–2", fill-ins about duration and loop. The unassisted agent built the same thing. Nothing in it was a decision.
 
@@ -132,7 +132,7 @@ After (references chosen first; the motion ref is a stop-motion paper gif from m
 ```
 the brief says "our issue tracker app" and nothing is attached: attach a screenshot of the real issues list, or it gets rebuilt from u1 below.
 
-in stewdio, skill-after, create the following, in the look of printed matter (riso-ish ink on uncoated stock, two spot colours, visible grain), the ui rebuilt as paper:
+in stewdio, file-d, create the following, in the look of printed matter (riso-ish ink on uncoated stock, two spot colours, visible grain), the ui rebuilt as paper:
 
 1. an empty issues list on a sheet of paper, camera top-down. each task slides in from the right edge as its own paper slip and lands with a stop-motion snap, one after another like m1, the stack getting thicker as they land
 2. at ~2.5s a hand (real footage cutout, c1) reaches in and ticks the top three with a marker; each tick is one stroke, the slip turns from the dark ink to the accent ink as it is done
@@ -161,7 +161,7 @@ Fill-ins: printed matter was chosen over the safe dark-UI look because it makes 
 
 ## 10. Missing motion + art direction + asset (found, vetted, structured)
 
-Before (2026-10-26): `in the stewdio twitter1026, for the ai psychosis comp, do the following at 7s: / have a inventory/equipment interface move in like stone blocks <img> / the inventory interface is that for a macbook, the controller keep adding stickers onto the laptop, the stickers eventually overflow the inventory screen and the computer is completely covered in stickers / also, be sure to include this memey artifact as part of the overwhelming equiping <makerworld url> / the whole sequence should be around 3-4s`
+Before (2026-10-26): `in the stewdio file-b, for the main comp, do the following at 7s: / have a inventory/equipment interface move in like stone blocks <img> / the inventory interface is that for a macbook, the controller keep adding stickers onto the laptop, the stickers eventually overflow the inventory screen and the computer is completely covered in stickers / also, be sure to include this memey artifact as part of the overwhelming equiping <makerworld url> / the whole sequence should be around 3-4s`
 
 Eight follow-ups, every one about how stickers land and how dense the cover gets (`the cursor adding the stickers way too quickly`, `don't make it the spiral, make it more randomized`, `upon adding a sticker can you give an impact ... slight screen shake, on the first few`, `cover the laptop's keyboards with more stickers too`). That is what a motion ref and an art-direction ref supply.
 
@@ -170,7 +170,7 @@ Search (run 2026-11-02): are.na `sticker bomb` / `stickers stop motion`, Pintere
 After:
 
 ```
-in stewdio twitter1026, ai psychosis comp, at 7s, ~3.5s total:
+in stewdio file-b, main comp, at 7s, ~3.5s total:
 
 1. an inventory/equipment interface slides in as stone blocks (a1), ~0.5s
 2. the inventory is for a macbook: laptop open by default, then closes; a highlighted cursor adds stickers to the lid one at a time, each landing exactly under the cursor with a hit impact (slight screen shake on the first ~4)
@@ -182,7 +182,7 @@ same 16bit quantisation and palette as the rest of the comp
 keep everything before 7s as is
 
 refs:
-- a1 .context/attachments/BYJssa/image.png: art direction, stone-block material + chunky entrance only
+- a1 .context/attachments/<id>/image.png: art direction, stone-block material + chunky entrance only
 - a2 .context/refs/stickerbomb/a2.jpg: art direction, density, random overlap and white die-cut borders only, not the brands or the pink laptop (pinterest.com/pin/749990144179145089)
 - c1 makerworld.com/en/models/2924138: copy, the lid stopper object, closely
 assets:
