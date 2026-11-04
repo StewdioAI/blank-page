@@ -74,7 +74,7 @@ out loud:
 That's enough to start. Add what it's for, a vibe, or a brand you like if you have one:
 
 ```
-/blank-page 5 second clip for my coffee shop's new menu, minimalist style
+/blank-page 5 second clip for my coffee shop's new menu, warm and cozy
 ```
 
 You can also just say "expand this prompt" or "help me write the prompt for ..." and it
