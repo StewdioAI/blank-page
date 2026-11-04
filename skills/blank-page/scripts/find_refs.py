@@ -15,13 +15,16 @@ are.na is searched by channel, never by block keyword:
                                           kind and an optional regex over title/description/source; nested channels are
                                           listed as `subchannel`; with dir, numbered contact sheets <dir>/<slug>-NN.png
                                           (24 tiles each, tile number = "n" in the output)
-  find_refs.py connections <block_id>     the other channels a good block sits in, to branch out to adjacent curators
+  find_refs.py connections <block_id> [n] the other channels a good block sits in (default 12, biggest first), to
+                                          branch out to adjacent curators
   find_refs.py umbrella <slug> [regex]    only the channels nested in an umbrella channel (blake-shao's vis / flat /
                                           form / mo-graph / mercenary are indexes of aesthetics, not aesthetics),
                                           biggest first, optionally filtered by a regex on the title
   find_refs.py pin <pin_url> [...]        resolve Pinterest pins to the original image / gif / 720w mp4 + outbound link
-  find_refs.py get <url> <out>            download with a browser UA
-  find_refs.py sheet <video|gif> <out>    3x3 contact sheet + duration, so motion can be read and timed
+  find_refs.py get <url> <out>            download with a browser UA; the extension is corrected to the real file type
+  find_refs.py sheet <video|gif> <out> [frames]
+                                          contact sheet (default 9 frames, 3x3) + duration, so motion can be read and
+                                          timed; 16 or 25 frames to time a long clip finely
   find_refs.py sketchfab <query> <dir> [n] [max_faces]
                                           downloadable Sketchfab models: licence, faces, parts-relevant counts,
                                           glb size, page; thumbnails tiled into <dir>/sketchfab-sheet.png (row-major = order)
@@ -30,8 +33,9 @@ are.na is searched by channel, never by block keyword:
                                           else with SKETCHFAB_TOKEN (sketchfab.com/settings/password), else prints the page
 
 Search order is are.na (channels only) first, Pinterest only for roles still empty. Pinterest has no usable search
-endpoint: find pins with a web search restricted to pinterest.com, then resolve them here. Output is one JSON object per line."""
-import base64, concurrent.futures, gzip, html, json, os, re, shutil, subprocess, sys, time, urllib.parse
+endpoint: find pins with a web search restricted to pinterest.com, then resolve them here. Output is one JSON object per line;
+a query with no hits prints one {"empty": true} line instead of nothing."""
+import base64, concurrent.futures, gzip, html, json, math, os, re, shutil, subprocess, sys, time, urllib.parse
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 
@@ -66,11 +70,17 @@ def chan_row(c):
             "followers": c.get("follower_count"), "owner": c["user"]["slug"],
             "page": f"https://www.are.na/{c['user']['slug']}/{c['slug']}"}
 
+def empty(site, **query):
+    # one line instead of silence, so "no hits" can't be mistaken for a crash or a filtered pipe
+    print(json.dumps({"site": site, **query, "empty": True}))
+
 def channels(query, n=12):
     cs = arena(f"v2/search/channels?q={urllib.parse.quote(query)}&per=60").get("channels", [])
     cs = [c for c in cs if (c.get("length") or 0) >= 20]
     for c in sorted(cs, key=lambda c: -(c.get("follower_count") or 0))[:n]:
         print(json.dumps(chan_row(c)))
+    if not cs:
+        empty("are.na", channels=query)
 
 def user_channels(user):
     page = 1
@@ -107,13 +117,17 @@ def search(query, out_dir=None, pages=2, kind="all"):
     for i, r in enumerate(rows, 1):
         r["n"] = i
         print(json.dumps(r))
+    if not (chans or rows):
+        empty("are.na", search=query, kind=kind)
     if out_dir and rows:
         tile_sheets(rows, out_dir, "search-" + re.sub(r"[^a-z0-9]+", "-", query.lower()).strip("-"))
 
-def connections(block_id):
+def connections(block_id, n=12):
     cs = arena(f"v2/blocks/{block_id}/channels?per=50").get("channels", [])
-    for c in sorted(cs, key=lambda c: -(c.get("length") or 0)):
+    for c in sorted(cs, key=lambda c: -(c.get("length") or 0))[:n]:
         print(json.dumps(chan_row(c)))
+    if not cs:
+        empty("are.na", connections=block_id)
 
 def umbrella(slug, grep=None):
     subs, page = [], 1
@@ -125,6 +139,8 @@ def umbrella(slug, grep=None):
         page += 1
     for c in sorted(subs, key=lambda c: -(c.get("length") or 0)):
         print(json.dumps({**chan_row(c), "kind": "subchannel", "umbrella": slug}))
+    if not subs:
+        empty("are.na", umbrella=slug, grep=grep)
 
 def channel(slug, out_dir=None, n=48, kind="all", grep=None):
     rows, page = [], 1
@@ -147,6 +163,8 @@ def channel(slug, out_dir=None, n=48, kind="all", grep=None):
     for i, r in enumerate(rows, 1):
         r["n"] = i
         print(json.dumps(r))
+    if not rows:
+        empty("are.na", channel=slug, kind=kind, grep=grep)
     if out_dir and rows:
         tile_sheets(rows, out_dir, slug)
 
@@ -178,9 +196,9 @@ def tile_sheets(rows, out_dir, slug, per=24):
             ff = ["-i", src, "-frames:v", "1"]
         else:
             ff = ["-user_agent", UA, "-ss", "1", "-i", r["media"], "-frames:v", "1"]
-        ok = subprocess.run(["ffmpeg", "-v", "error", "-y", *ff, "-vf", vf, out], capture_output=True).returncode == 0
+        ok = subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", *ff, "-vf", vf, out], capture_output=True).returncode == 0
         if not (ok and os.path.exists(out)):
-            subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=#dddddd:s=240x240",
+            subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=#dddddd:s=240x240",
                             "-frames:v", "1", "-vf", label % r["n"], out], capture_output=True)   # keep numbering intact
     with concurrent.futures.ThreadPoolExecutor(8) as pool:
         list(pool.map(one, rows))
@@ -193,7 +211,7 @@ def tile_sheets(rows, out_dir, slug, per=24):
         for j in range(count):
             shutil.copy(os.path.join(tmp, f"{start + j:04d}.png"), os.path.join(part, f"{j + 1:04d}.png"))
         out = os.path.join(out_dir, f"{slug}-{k:02d}.png")
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", os.path.join(part, "%04d.png"), "-frames:v", "1",
+        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", os.path.join(part, "%04d.png"), "-frames:v", "1",
                         "-vf", f"tile=6x{-(-count // 6)}:padding=4:color=white", out], check=True)
         print(json.dumps({"sheet": out, "tiles": f"{start}-{start + count - 1}"}))
 
@@ -219,9 +237,27 @@ def pin(url):
     print(json.dumps({"site": "pinterest", "page": url, "title": title and html.unescape(title.group(1)),
                       "media": media, "moving": bool(vids or gifs), "embed": embed, "source": source}))
 
+MAGIC = [(b"\x89PNG", "png"), (b"\xff\xd8\xff", "jpg"), (b"GIF8", "gif"), (b"glTF", "glb"),
+         (b"\x1a\x45\xdf\xa3", "webm"), (b"%PDF", "pdf")]
+SAME = {"jpeg": "jpg", "mov": "mp4", "m4v": "mp4"}
+
+def real_ext(data):
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return "webp"
+    if data[4:8] == b"ftyp":
+        return "mp4"
+    return next((ext for magic, ext in MAGIC if data.startswith(magic)), None)
+
 def get(url, out):
-    open(out, "wb").write(fetch(url, 60))
-    print(json.dumps({"saved": out, "from": url}))
+    data = fetch(url, 60)
+    # CDNs serve pngs under .jpg urls and webp under .png: name the file for what it is
+    base, ext = os.path.splitext(out)
+    real = real_ext(data)
+    if real and SAME.get(ext[1:].lower(), ext[1:].lower()) != real:
+        out = f"{base}.{real}"
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+    open(out, "wb").write(data)
+    print(json.dumps({"saved": out, "from": url, **({"type": real} if real else {})}))
 
 OBJAVERSE = "https://huggingface.co/datasets/allenai/objaverse/resolve/main/"
 
@@ -251,7 +287,7 @@ def sketchfab(query, out_dir, n=9, max_faces=300000):
                           "tex_max": glb.get("textureMaxResolution"), "free_download": r["uid"] in mirror,
                           "page": f"https://sketchfab.com/3d-models/{r['uid']}"}))
     if rows:   # one tile per result, 3 across, numbered row-major to match "n"
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", os.path.join(out_dir, "sf%02d.jpg"), "-vf",
+        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", os.path.join(out_dir, "sf%02d.jpg"), "-vf",
                         "scale=480:270:force_original_aspect_ratio=decrease,pad=480:270:-1:-1:white,"
                         f"tile=3x{-(-len(rows) // 3)}:padding=4:color=white", "-frames:v", "1",
                         os.path.join(out_dir, "sketchfab-sheet.png")], check=True)
@@ -273,14 +309,17 @@ def sketchfab_get(uid, out):
     print(json.dumps({"saved": out, "uid": uid, "page": page, "via": "sketchfab",
                       "format": "glb" if d.get("glb") else "gltf zip"}))
 
-def sheet(src, out):
+def sheet(src, out, frames=9):
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", src],
-                               capture_output=True, text=True).stdout.strip() or 0)
-    fps = 9 / dur if dur > 0 else 1
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vf",
-                    f"fps={fps:.4f},scale=480:-2,tile=3x3:padding=4:color=white", "-frames:v", "1", out], check=True)
+                               capture_output=True, text=True, stdin=subprocess.DEVNULL).stdout.strip() or 0)
+    fps = frames / dur if dur > 0 else 1
+    cols = math.ceil(math.sqrt(frames))
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+    subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", src, "-vf",
+                    f"fps={fps:.4f},scale=480:-2,tile={cols}x{-(-frames // cols)}:padding=4:color=white",
+                    "-frames:v", "1", out], check=True)
     print(json.dumps({"sheet": out, "duration_s": round(dur, 2),
-                      "frames_at_s": [round(i * dur / 9, 2) for i in range(9)]}))
+                      "frames_at_s": [round(i * dur / frames, 2) for i in range(frames)]}))
 
 if __name__ == "__main__":
     cmd, args = (sys.argv[1:2] or ["help"])[0], sys.argv[2:]
@@ -288,13 +327,13 @@ if __name__ == "__main__":
     elif cmd == "search": search(args[0], args[1] if len(args) > 1 else None, int(args[2]) if len(args) > 2 else 2,
                                  args[3] if len(args) > 3 else "all")
     elif cmd == "user-channels": user_channels(args[0])
-    elif cmd == "connections": connections(args[0])
+    elif cmd == "connections": connections(args[0], int(args[1]) if len(args) > 1 else 12)
     elif cmd == "umbrella": umbrella(args[0], args[1] if len(args) > 1 else None)
     elif cmd == "channel": channel(args[0], args[1] if len(args) > 1 else None, int(args[2]) if len(args) > 2 else 48,
                                    args[3] if len(args) > 3 else "all", args[4] if len(args) > 4 else None)
     elif cmd == "pin": [pin(u) for u in args]
     elif cmd == "get": get(args[0], args[1])
-    elif cmd == "sheet": sheet(args[0], args[1])
+    elif cmd == "sheet": sheet(args[0], args[1], int(args[2]) if len(args) > 2 else 9)
     elif cmd == "sketchfab": sketchfab(args[0], args[1], *map(int, args[2:4]))
     elif cmd == "sketchfab-get": sketchfab_get(args[0], args[1])
     else: sys.exit(__doc__)

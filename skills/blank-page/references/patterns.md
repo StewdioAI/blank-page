@@ -96,3 +96,38 @@ finish inflating after the entrance`.
 - `take your time with everything before` (do not compress the earlier beats)
 - `create a copy that tries another approach` (branch, do not overwrite)
 - `no need to do backward directions, they are not a valid variation` / `mirror are not valid either`
+
+## How the author used references
+
+From 271 attachments across the transcripts and the prompts that cite them:
+
+1. **One reference, one job.** Two qualities from outside means two files: `a tunnel
+   of this pattern <jpg> in the color way of the iridescent woman <png>`. No single
+   file was ever asked for both motion and look.
+2. **Moving media for motion, stills for look.** Every mp4 and gif was cited for a
+   mechanic or transition; every still for a subject, palette, texture or detail.
+3. **Motion references get the subject swapped.** `recreate this animation, but make
+   it nyc subway`; what is kept is named (`only the spiral form factor and the scroll
+   animation`), the look is not inherited.
+4. **References get scoped to a part.** `the first two patterns in this picture`, `the
+   outer portion of the first comp`.
+5. **References come out of curated channels.** Both of his video motion refs were
+   blocks in his are.na `mo-graph` channel. Search by channel, never by block keyword.
+6. **Copies get loyal only after a correction.** `replicate these more loyally`, `it
+   doesn't look like the glb i uploaded exactly, why?`. Say the fidelity up front, and
+   never re-interpret an uploaded asset.
+
+## Fence failures (2026-11-02)
+
+Blake names niche aesthetics himself; other users name mainstream ones in plain words
+(`clean and minimal, lots of white`, `like stripe's style`, `like claymation`). The
+"remarkable, not matching" rule was written for the first case and, applied to the
+second, overrode what the user asked for (2026-11-02: minimal → a graphic score,
+stripe → the Sessions conference sizzle, claymation → clay.com's marble run; all three
+read as misses). So:
+
+The second fix (rerun r3, same day) overshot the other way: the agents screenshotted
+the fence (the stripe docs page, five product-UI screenshots) and fenced the motion
+too (UI micro-interactions as m1). The builds came out as web pages at browser scale
+with a small thing moving on them. Both runs missed for the same reason: the fence
+was treated as a place to copy from, not as a query. So:
