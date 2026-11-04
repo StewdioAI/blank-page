@@ -4,26 +4,6 @@ The roles a reference may play, where to search, and how to vet. `scripts/find_r
 does the fetching; run it with no arguments for the command list. Output is one JSON
 object per line.
 
-## How the author uses references
-
-From 271 attachments across the transcripts and the prompts that cite them:
-
-1. **One reference, one job.** Two qualities from outside means two files: `a tunnel
-   of this pattern <jpg> in the color way of the iridescent woman <png>`. No single
-   file was ever asked for both motion and look.
-2. **Moving media for motion, stills for look.** Every mp4 and gif was cited for a
-   mechanic or transition; every still for a subject, palette, texture or detail.
-3. **Motion references get the subject swapped.** `recreate this animation, but make
-   it nyc subway`; what is kept is named (`only the spiral form factor and the scroll
-   animation`), the look is not inherited.
-4. **References get scoped to a part.** `the first two patterns in this picture`, `the
-   outer portion of the first comp`.
-5. **References come out of curated channels.** Both of his video motion refs were
-   blocks in his are.na `mo-graph` channel. Search by channel, never by block keyword.
-6. **Copies get loyal only after a correction.** `replicate these more loyally`, `it
-   doesn't look like the glb i uploaded exactly, why?`. Say the fidelity up front, and
-   never re-interpret an uploaded asset.
-
 ## Roles
 
 Every reference gets exactly one role, a take (what it supplies) and a fidelity word.
@@ -48,44 +28,20 @@ f family, t technique.
 
 ## Order of work
 
-**References come first, before any beat is written.** In every mode that searches
-(brief, batch, sequence) two sets are mandatory. On a bare draft they are chosen for
-being remarkable, not for matching the draft's words; when the draft names a style,
-brand or medium, or attaches a reference, they are chosen as the best instance inside
-that fence (see "The fence" below):
-
-1. **Five images to ground the visual direction.** Stills from one aesthetic (see
-   "Art direction" below), covering five jobs: the overall look, the palette and
-   texture, the material or surface, a composition or framing, a detail or motif.
-   Choosing them and choosing the look are the same act; the aesthetic's name goes in
-   the first line of the prompt. Five tiles from one channel is normal; two channels
-   of the same aesthetic is fine; two aesthetics is not.
-2. **Three moving references to ground the motion.** gif / mp4 / multi-state still,
-   each a move worth copying: the test is "would he add this to mo-graph?", not "does
-   it show the right object?". A clip of the right object doing a dull move loses to
-   a striking move on a different subject. Aim for three different jobs: the main
-   mechanic, the transition or turn, the camera or exit.
-
-Then decide, for all eight, **exactly how each is used**: which beat, what is taken,
-at what scale. Write that into `refs:`. A reference with no beat is cut.
-
-A user attachment fills its slot once it has a role. The picks also set the
-`.context/refs/<topic>/` folder the user vetoes from.
+References come first, before any beat (SKILL.md steps 2-4): five images from one
+aesthetic and three moving references, then, for all eight, the beat each feeds and
+what is taken. Five tiles from one channel is normal; two channels of the same
+aesthetic is fine; two aesthetics is not. For motion the test is "would he add this to
+mo-graph?", not "does it show the right object?": a dull move on the right object
+loses to a striking move on a different subject. Before falling back on a camera move
+written in words, try `channels "camera move"`, `"zoom"`, `"transitions"`.
 
 ### The fence: a named style or an attached reference
 
 Blake names niche aesthetics himself; other users name mainstream ones in plain words
-(`clean and minimal, lots of white`, `like stripe's style`, `like claymation`). The
-"remarkable, not matching" rule was written for the first case and, applied to the
-second, overrode what the user asked for (2026-11-02: minimal → a graphic score,
-stripe → the Sessions conference sizzle, claymation → clay.com's marble run; all three
-read as misses). So:
-
-The second fix (rerun r3, same day) overshot the other way: the agents screenshotted
-the fence (the stripe docs page, five product-UI screenshots) and fenced the motion
-too (UI micro-interactions as m1). The builds came out as web pages at browser scale
-with a small thing moving on them. Both runs missed for the same reason: the fence
-was treated as a place to copy from, not as a query. So:
+(`clean and minimal, lots of white`, `like stripe's style`, `like claymation`). Both
+past failures (overriding the word, screenshotting it; see `patterns.md`) treated the
+fence as a place to copy from, not as a query. So:
 
 1. **Decode the word** in one line: what the user pictures when they say it. `minimal,
    lots of white` = big type, one accent, generous margins; `claymation` = stop-motion
@@ -111,8 +67,12 @@ was treated as a place to copy from, not as a query. So:
      supply a2-a5 (palette, material, composition, detail). A product-UI channel
      (`fintech`, `minimal-ui`, `dashboard`) is a `u` source only, never a1-a5: its
      tiles are screenshots and the build will be one too.
+   - **Umbrella channels** stay a source inside the fence: `umbrella <slug> "<word>|<decoded
+     word>"` finds his nested channels that carry it.
    Sheet two or three per kind, drop the homonyms by eye (`stripe` fashion, `clay-play`
-   = clay.com), pick the tile that stops you. Remarkable is judged among tiles that
+   = clay.com), pick the tile that stops you. If the name query is all homonyms, the
+   decoded-word and umbrella channels carry the fence on their own; a channel named for
+   the subject (`menu design` for a menu clip) is not a way round it. Remarkable is judged among tiles that
    pass the fence; a tile outside it loses however striking.
 3. **The primary site supplies facts, not frames.** For `like <brand>` take the hex,
    the typeface and one real component from the product surface (homepage, docs, app)
@@ -141,9 +101,8 @@ Then, as the beats need them:
   convincingly in code, even if the draft never mentions a model. If the thing is the
   user's own and nothing is attached, say so above the prompt and name the stand-in.
 - **ui**: a beat shows an interface and there is no screenshot or earlier mock.
-- **detail**: one beat needs a feature the other references do not show (a motif, a
+- **detail**: one beat needs a feature none of the five images show (a motif, a
   pattern for the turn beat).
-- **detail, extra**: a beat needs a feature none of the five images show.
 
 If a mandatory slot is still empty after are.na, Pinterest and primary sites, write
 `[? motion ref]` / `[? visual ref]` into the prompt beside a words-only description and
@@ -170,8 +129,9 @@ how a named style or company is found, see "The fence". The loop, per role:
    `umbrella` and work in the nested channel that fits, never the umbrella's own
    mixed blocks.
 2. **Widen.** `channels "<query>"` lists channels whose title matches, ranked by
-   followers, 20+ blocks. `connections <block_id>` lists the other channels holding a
-   good block: curators with the same eye, usually the best next stop.
+   followers, 20+ blocks. `connections <block_id> [n]` lists the other channels holding
+   a good block (12 biggest by default): curators with the same eye, usually the best
+   next stop. A query with no hits prints one `"empty": true` line.
 3. **Rank.** Prefer titles naming the exact mechanic / aesthetic / ui type, 50-2,000
    blocks, followers as a quality signal. Skip catch-all dumps however large.
 4. **Sheet.** `channel <slug> .context/refs/<topic>/arena 48 <moving|still> [regex]`
@@ -184,10 +144,10 @@ how a named style or company is found, see "The fence". The loop, per role:
 Stop after three channels per role, then go to Pinterest.
 
 **Motion seeds**, always sheeted with `moving`:
-- `mo-graph-1uxjlkjqqhc` (53 blocks, gifs and mp4s; pass the bare slug, `blake-shao/...` 404s)
+- `mo-graph-1uxjlkjqqhc` (76 blocks, gifs and mp4s; pass the bare slug, `blake-shao/...` 404s)
 - its five nested channels: TYPE ANIMATION REFERENCES (`type-animation-references`,
   474), DESIGN // MOVING (`design-moving-l9-xt3sxtne`, 406), Motion Inspo
-  (`motion-inspo-tfrw-gidqfw`, 195), AD | Device / Tech (`ad-device-tech`, 182),
+  (`motion-inspo-tfrw-gidqfw`, 205), AD | Device / Tech (`ad-device-tech`, 182),
   Product video (`product-video-mf4kzs1zbo0`, 22). Type beats → TYPE ANIMATION;
   device or product beats → AD | Device / Tech and Product video.
 - widen with `channels "<mechanic> animation"`, `"motion design"`, `"kinetic type"`,
@@ -206,9 +166,10 @@ brief names none and the file gives none, the menu is:
   Japanese Graphic Design, Chinese Typography, Pattern, single-designer channels),
   `form-glcjdzmigiq` (15, objects: Pocket Tech, Handheld, Industrial Design, form
   follows fiction), `mercenary` (3, Visual Systems, Design Systems). Smaller umbrellas:
-  `yiwqez8yg-e` (Japanese houses), `embroidery-jt4hrowbvw4`, `translucent-skin`,
-  `root-systems-m5flfkrwpe8`, `foundry-p8qvueq4coo`. `data-geo`, `smart-shamate`,
-  `b48e9jcrcse`, `baseball-hat-alphabet` are flat single collections (families).
+  `yiwqez8yg-e` (Japanese houses), `translucent-skin`, `root-systems-m5flfkrwpe8`,
+  `foundry-p8qvueq4coo`. `embroidery-jt4hrowbvw4` (19 blocks; sheet it, its one nested
+  channel is Woven Images), `data-geo`, `smart-shamate`, `b48e9jcrcse`,
+  `baseball-hat-alphabet` are flat single collections (families).
 - Plus his past named styles (riso, frutiger aero, 16-bit, ukiyo-e, porcelain,
   embroidery, klein blue, PS2 low-poly) and CARI's ~240 named-aesthetic channels
   (`user-channels evan-collins-1522646491`: Y2K, Frutiger Aero, Vectorheart,
@@ -310,9 +271,11 @@ Matching titles are not references. Pinterest's top `sticker peel animation` pin
 tutorial thumbnails.
 
 1. Download each candidate to `.context/refs/<topic>/` with `get`, named
-   `<role-letter><n>.<ext>` (`m1.mp4`, `a1.jpg`).
+   `<role-letter><n>.<ext>` (`m1.mp4`, `a1.jpg`). `get` fixes the extension to the
+   real type (a png served as `.jpg` is saved as `a1.png`); cite the `saved` path.
 2. Look at it. Stills: Read the file. Moving: `sheet <file> <out.png>` makes a 3x3
-   contact sheet with timestamps and duration.
+   contact sheet with timestamps and duration; `sheet <file> <out.png> 16` (or 25)
+   when the clip is long and a beat's time range has to be read to ~0.3 s.
 3. Keep only if the role's quality is visible: motion, the mechanic happens on screen
    as more than a cut or fade and it is not a tutorial; art direction, the palette or
    texture fills most of a 600px+ frame; copy, the real thing, not a remake or
@@ -326,17 +289,15 @@ tutorial thumbnails.
    the one whose move or look you would want to see regardless of the draft. Passing
    includes the fence: a tile outside a named style or an attachment's look does not
    pass, however striking.
-7. A film frame, not a web page: one hero element (a control, a line, a word, a card)
-   takes ≥40% of the frame height at the beat it matters; the smallest text is ≥24 px
-   at 1080p; nothing is reproduced at 1:1 browser scale. If the composition reference
-   is a screenshot at browser scale, it is a fact for a1's take, not a4.
+7. A film frame, not a web page (SKILL.md rules): a composition reference that is a
+   screenshot at browser scale is a fact for a1's take, not a4.
 
 ## Structuring the brief from the references
 
 1. **Beats from the motion references.** Read each contact sheet: what enters, the
    main action, each transition, the exit, with times from `frames_at_s`. Assign
-   each clip its beat (m1 the mechanic, m2 the turn, m3 the camera or exit), swap the
-   subject, scale to the target duration and state the ratio (`m1 is 3.4s, ours ~5s,
+   each clip its beat (together they cover the mechanic, the turn and the camera or
+   exit; number them m1-m3 in beat order), swap the subject, scale to the target duration and state the ratio (`m1 is 3.4s, ours ~5s,
    so 1.5x slower`). Name the time range taken (`m1 0.0-1.6s`).
 2. **First line and surfaces from the five images.** Name the aesthetic in the first
    line. Then place each image on a beat with the exact quality taken: `a3's wet
@@ -344,38 +305,8 @@ tutorial thumbnails.
    2`, `a2's palette for the ink only`. Never "like a1".
 3. **Subject from the copy reference and assets**, on the beat where it first appears,
    with its fidelity word.
-4. **The turn.** At least one beat where the subject is revealed, changes medium or
-   texture, becomes something else, or the camera pulls out to show a larger whole.
-   If the motion reference has no such beat, add one and find its clip or detail
-   reference. Enter, animate, hold is not a finished brief. If the draft already
-   contains the transformation (`snaps into`, `comes back as`, `checks off on the
-   other`), that verb is the turn: find the motion reference for *it* and make it
-   the largest beat; do not add a second metaphor on top. A ≤5 s product clip
-   carries one idea, and the action fills the clip: the end hold is under 1 s. If
-   the turn is over by 1.6 s, the beats are compressed or a second half is missing
-   (a proof beat, a push-in on the result).
-5. **Ideas are welcome**: a prop that makes the subject specific, a second beat that
-   answers the first, a camera move tied to the reveal. Write them as beats. Keep
-   out annotation text, UI chrome, guiding lines, drop shadows and fades where a cut
-   would do.
-6. **Detail references inline** on the one beat they affect, scoped.
+4. **The turn and the ideas**: SKILL.md steps 4-5. If no motion reference has a turn
+   beat, add one and find its clip or detail reference.
+5. **Detail references inline** on the one beat they affect, scoped.
 
-## Output block
-
-```
-refs:
-- a1 .context/refs/<topic>/a1.jpg: look, sets beat 1's frame and the overall finish (<block url>, channel <slug>, orig <source url>)
-- a2 ...: palette, the two ink colours, used everywhere (<block url>, channel <slug>)
-- a3 ...: material, the canvas surface in beats 1-3 (<block url>, channel <slug>)
-- a4 ...: composition, beat 4's framing of the final row (<block url>, channel <slug>)
-- a5 ...: detail, the socket shape the shapes land in, beat 2 (<block url>, channel <slug>)
-- m1 .context/refs/<topic>/m1.mp4: motion, beat 1-2: <mechanic>, 0.0-1.6s at 1.5x slower, subject swapped, not the look (<page url>, channel <slug>)
-- m2 ...: motion, beat 3 (the turn): <what is taken> (<page url>, channel <slug>)
-- m3 ...: motion, beat 4: <camera / exit taken> (<page url>, channel <slug>)
-- u1 ...: ui, <ui type> layout + components, brand-neutral (<block url>, channel <slug>)
-- c1 ...: copy, <subject>, one-to-one (<source url>)
-assets:
-- <path or url>: use as-is for <what>
-```
-
-User-attached references go in the same list with the role their phrasing implies.
+The `refs:` / `assets:` block follows the brief template in SKILL.md.
