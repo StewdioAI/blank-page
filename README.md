@@ -13,7 +13,7 @@ directions you wouldn't have thought of.
 By [Stewdio](https://www.stewdio.ai), where you create motion graphics with prompts and
 refine them by hand in a visual editor. The before / after clips below were made there.
 The skill works with any agent, and pairs well with the
-[Stewdio plugin](https://github.com/StewdioAI/plugin), which takes the expanded prompt
+[Stewdio plugin](https://www.stewdio.ai), which takes the expanded prompt
 straight to an editable comp.
 
 Made by Blake Shao ([@blak3shao](https://x.com/blak3shao)).
