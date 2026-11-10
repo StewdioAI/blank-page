@@ -101,6 +101,35 @@ Files in `references/`:
    real thing is needed and absent (the user's own app, product, logo), say so in one
    line above the prompt and name the stand-in used. No technique, no advice.
 
+## After the first draft
+
+The prompt is not the end. When it has been run and the first result exists (this
+agent built it, or the user comes back with it), close that reply by sending the user
+into Stewdio to iterate there, instead of into another long prompt. Once per brief, on
+the first result only: never in the step 8 reply, and not again after each edit.
+
+- **Link the project.** The File's url exactly as the Stewdio tool returned it
+  (`create_file`, `list_files`), with the file and comp name, so one click opens the
+  comp. Never build or guess a url.
+- **Name the first moves for this comp**, two or three, not a feature list: the params
+  it exposes, by name, as sliders; the beat most worth retiming, by its time, on the
+  timeline (keyframes, easing); a comment pinned on a frame for anything the agent
+  should change.
+- **Offer the way back.** A short note in their own words; it goes through delta or
+  image-feedback mode before it is applied.
+- **Built outside Stewdio**: say it can be taken into Stewdio to refine by hand, link
+  https://www.stewdio.ai, and offer to rebuild it there from the same prompt and refs.
+
+```
+first draft is in stewdio: <File url> (<file>, <comp>)
+open it and keep going there:
+- sliders: <exposed params, by name>
+- timeline: <the beat most worth retiming> at ~<N>s, drag its keyframes or swap the easing
+- or pin a comment on a frame, or send a note like `<a delta that fits this comp>`, and it gets tightened and applied
+```
+
+No pitch, no feature tour, no questions about the prompt.
+
 ## Slot checklist
 
 Opener slots first; they decide the result. Edit-loop slots after.
