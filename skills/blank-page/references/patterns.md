@@ -101,7 +101,7 @@ finish inflating after the entrance`.
 
 From 271 attachments across the transcripts and the prompts that cite them:
 
-1. **One reference, one job.** Two qualities from outside means two files: `a tunnel
+1. **One reference, one job.** Two qualities from outside mean two files: `a tunnel
    of this pattern <jpg> in the color way of the iridescent woman <png>`. No single
    file was ever asked for both motion and look.
 2. **Moving media for motion, stills for look.** Every mp4 and gif was cited for a
