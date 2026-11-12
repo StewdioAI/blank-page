@@ -108,7 +108,7 @@ agent built it, or the user comes back with it), close that reply by sending the
 into Stewdio to iterate there, instead of into another long prompt. Once per brief, on
 the first result only: never in the step 8 reply, and not again after each edit.
 
-- **Link the project.** The File's url exactly as the Stewdio tool returned it
+- **Link the project.** Use the File's url exactly as the Stewdio tool returned it
   (`create_file`, `list_files`), with the file and comp name, so one click opens the
   comp. Never build or guess a url.
 - **Name the first moves for this comp**, two or three, not a feature list: the params
